@@ -38,12 +38,13 @@ NOTE: All of the modelling here is Semantic Web modelling but that doesn't mean 
 [quote, Kate Moss]
 I don’t think modeling is a career I’m going to pursue.
 
+
 Supermodels always consists of several types of model:
 
-* Background Models - standard and common Semantic Web models used as "upper" or higher order/abstract models for all other Supermodel models to conform to
-* Vocabulary Models - codelist or taxonomy models of concepts referened by other Supermodel models
-* Component Models - individual models of things of importance within a scenario
-* Backbone Model - an integrative, summary model, that allows for crosswalking of elements within the Component Models
+* <<Background Models>> - standard and common Semantic Web models used as "upper" or higher order/abstract models for all other Supermodel models to conform to
+* <<Vocabulary Models>> - codelist or taxonomy models of concepts referened by other Supermodel models
+* <<Component Models>> - individual models of things of importance within a scenario
+* <<Backbone Model>> - an integrative, summary model, that allows for crosswalking of elements within the Component Models
 
 === Background Models
 
