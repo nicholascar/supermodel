@@ -1,0 +1,62 @@
+= Supermodel Model
+
+A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
+
+== Metadata
+
+[width=75%, frame=none, grid=none, cols="1,5"]
+|===
+|**IRI** | `https://linked.data.gov.au/def/supermodel`
+|**Preferred Label** | Supermodel
+|**Definition** | A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
+|**Created** | 2021-12-10
+|**Modified** | 2022-06-29
+|**Issued** | 0000-00-00
+|**Creator** | https://orcid.org/0000-0002-8742-7730[Nicholas J. Car]
+|**Publisher** | -
+
+_This model is not officially published by an Australian government organisation_
+|**Provenance** | This model has been created in response to the needs of several projects that required both specailised component and integrative modelling. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, Queensland Spatial Information Addressing & Cadastral modelling 2022 and the Indigenous Data Network catalogue modelling, 2021-2023.
+|**Status** | Early draft
+|**Version** | `sup:0.0.1`
+|**Code Repository** | https://github.com/nicholascar/supermodel
+|**License** | https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 International (CC BY 4.0)]
+|**Copyright** | &copy; Nicholas J. Car, 2022
+|**Machine-readable form (RDF)** | https://linked.data.gov.au/def/supermodel.ttl
+|===
+
+== Introduction
+
+This model is a https://www.w3.org/standards/semanticweb/[Semantic Web] model of how to create independent models - here called _Component Models_ and an integrative model - a _Backbone Model_ - for particular scenarios such that independent and potentially complex but related concerns can be modelled and yet still related to one another.
+
+This model indicates several ways in which the content of _Component Models_ can be related to one another either through a _Backbone Model_ or via other means such as common categorisation. It uses a series of fundamental models to set a _modelling baseline_ on top of which the _Component Models_ and the _Backbone Model_ are implemented.
+
+NOTE: All of the modelling here is Semantic Web modelling but that doesn't mean that implementations of Supermodels must be implemented in Semantic-Web-native systems: several Supermodel implementations indicate other forms of implementation, such as relational databases.
+
+== Supermodel Model
+
+[quote, Kate Moss]
+I don’t think modeling is a career I’m going to pursue.
+
+Supermodels always consists of several types of model:
+
+* Background Models - standard and common Semantic Web models used as "upper" or higher order/abstract models for all other Supermodel models to conform to
+* Vocabulary Models - codelist or taxonomy models of concepts referened by other Supermodel models
+* Component Models - individual models of things of importance within a scenario
+* Backbone Model - an integrative, summary model, that allows for crosswalking of elements within the Component Models
+
+=== Background Models
+
+=== Vocabulary Models
+
+=== Component Models
+
+=== Backbone Model
+
+== Demonstrations
+
+Here will be a demo Supermodel
+
+
+
+
