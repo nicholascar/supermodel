@@ -17,8 +17,10 @@ jobs:
         echo "installing asciidoctor"
         sudo apt-get install asciidoctor ruby -y
         echo "Making deployment dir - docs/"
-        mkdir docs
+        mkdir docs        
         echo "Add README to docs/"
+        mkdir -p docs/images
+        cp images/* docs/images/
         asciidoctor README.adoc -o docs/index.html
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
