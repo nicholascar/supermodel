@@ -1,6 +1,6 @@
 = Supermodel Model
 
-A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
+A model for the integration of multiple models.
 
 == Metadata
 
@@ -10,54 +10,88 @@ A Semantic Web model aimed at facilitating dataset-specific and generalised, int
 |**Preferred Label** | Supermodel
 |**Definition** | A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
 |**Created** | 2021-12-10
-|**Modified** | 2022-06-29
+|**Modified** | 2025-02-15
 |**Issued** | 0000-00-00
 |**Creator** | https://orcid.org/0000-0002-8742-7730[Nicholas J. Car]
 |**Publisher** | -
 
 _This model is not officially published by an Australian government organisation_
-|**Provenance** | This model has been created in response to the needs of several projects that required both specailised component and integrative modelling. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, Queensland Spatial Information Addressing & Cadastral modelling 2022 and the Indigenous Data Network catalogue modelling, 2021-2023.
-|**Status** | Early draft
+|**Provenance** | This model has been created in response to the needs of several projects that require both specialised component models and yet integration of them. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, Queensland Spatial Information Addressing & Cadastral modelling 2022 and the Indigenous Data Network catalogue modelling, 2021-2023.
+|**Status** | Draft
 |**Version** | `sup:0.0.1`
 |**Code Repository** | https://github.com/nicholascar/supermodel
 |**License** | https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 International (CC BY 4.0)]
-|**Copyright** | &copy; Nicholas J. Car, 2022
+|**Copyright** | &copy; Nicholas J. Car, 2021-2025
 |**Machine-readable form (RDF)** | https://linked.data.gov.au/def/supermodel.ttl
 |===
 
 == Introduction
 
-This model is a https://www.w3.org/standards/semanticweb/[Semantic Web] model of how to create independent models - here called _Component Models_ and an integrative model - a _Backbone Model_ - for particular scenarios such that independent and potentially complex but related concerns can be modelled and yet still related to one another.
+[.right.text-center]
+image::images/sm-overview.svg["GSWA Supermodel",width=50%]
+_An informal overview of the https://kurrawong.github.io/gswa-supermodel/[GSWA Supermodel] and its various parts._
 
-This model indicates several ways in which the content of _Component Models_ can be related to one another either through a _Backbone Model_ or via other means such as common categorisation. It uses a series of fundamental models to set a _modelling baseline_ on top of which the _Component Models_ and the _Backbone Model_ are implemented.
 
-NOTE: All of the modelling here is Semantic Web modelling but that doesn't mean that implementations of Supermodels must be implemented in Semantic-Web-native systems: several Supermodel implementations indicate other forms of implementation, such as relational databases.
+This model provides elements to relate other models to one another and to assign them roles indicating what parts they play with respect to one another. In doing this, this _Supermodel_ enables both the establishment of specialised models for an initiative's specialised domain data and also for their integration.
+
+Supermodels require that a set of models be nominated for use (they may be newly created but are often taken from pre-existing, fairly generic, models) and given the roles of _Integrative Model_. All data within the Supermodel scope is expected to be implemented according to elements and patterns from them, at least generically. Elements and patterns from these models are what people can expect to find in use at all points in within the Supermodel, even if parts of it extend beyond these into very specialised versions of them.
+
+Models with role _Component Model_ specialise the integrative models' elements and patterns can be created for each _dataset_ within the Supermodel's remit. These Component Models can implement the specialised elements and patterns needed to represent their unique content but _MUST_ be fully compatible with the Integrative Models. To ensure this is the case, profiling mechanisms from _The Profiles Vocabulary_ <<PROF>> are used to relate Component and Integrative models.
+
+The total set of identified existing models from which Component Models draw existing elements and patterns but which are not the common integrative models are given the role _Background Model_. The Supermodel mechanisms require that all model elements and patterns not created specifically for its domain work come from identified models with either the _Integrative_ or _Background_ model roles.
+
+// NOTE: All the modelling here is Semantic Web modelling but that doesn't mean that implementations of Supermodels must be implemented in Semantic-Web-native systems: several Supermodel implementations indicate other forms of implementation, such as relational databases.
+
+// https://www.w3.org/standards/semanticweb/[Semantic Web]
 
 == Supermodel Model
 
 [quote, Kate Moss]
 I don’t think modeling is a career I’m going to pursue.
 
+=== Roles
+Each model and vocabulary included within an instance of a Supermodel has at least one of the following Roles assigned to it:
 
-Supermodels always consists of several types of model:
+Integrative Model:: Role for a model that is specialised and extended by multiple models with Component Model role
 
-* <<Background Models>> - standard and common Semantic Web models used as "upper" or higher order/abstract models for all other Supermodel models to conform to
-* <<Vocabulary Models>> - codelist or taxonomy models of concepts referened by other Supermodel models
-* <<Component Models>> - individual models of things of importance within a scenario
-* <<Backbone Model>> - an integrative, summary model, that allows for crosswalking of elements within the Component Models
+Component Model:: Role for individual datasets within a Supermodels' remit which specialise and extend models with the Integrative and Background Model roles
 
-=== Background Models
+Background Model:: Role for a model that is specialised and extended by some models with Component Model role but not all
 
-=== Vocabulary Models
+Vocabulary:: Role for a controlled list of terms used in any of the Supermodel's models
 
-=== Component Models
+=== Mechanisms
 
-=== Backbone Model
+The Supermodel and models within it must use a consistent modelling mechanism that allows for the modelling of both the content of the various models and relations between them, as per the section next.
+
+All Supermodels implemented to date use https://www.w3.org/standards/semanticweb/[Semantic Web] modelling techniques and, specifically, the <<RDF>>, <<RDFS>> and <<OWL>> fundamental models.
+
+These models are given the role of _Background Model_ within a Supermodel but are often not listed in overview diagrams, due to their low-level nature.
+
+=== Model Relations
+
+Models within the Supermodel relate to one another in various ways. The most common way is for one to _profile_ another where profile means:
+
+[quote]
+a specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications <<PROF>>
+
+Within Supermodel practice, profiling another model means using elements and patterns from it and specialising and extending them while ensuring that any data conforming to the profiling model still conforms to the profiled model.
+
+For example, a model with the _Integrative Model_ role might declare a class for `Person` and require that all `Person` instances have present one predicate of `height` indicating a `float` value. A profiling model would be free to declare a subclass of `Person` called `Student` with specialised predicates relating to student things, but it must still ensure that all instances of `Student` require a `height` predicate so that they are still valid `Person` instances.
+
+Profiling between models within a Supermodel is indicated with the `prof:isProfileOf` predicate on the main model element, usually an instance of `owl:Ontology`.
+
+
 
 == Demonstrations
 
-Here will be a demo Supermodel
+* https://kurrawong.github.io/gswa-supermodel/[Geological survey of WA's Supermodel]
+* https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information's Supermodel]
 
 
 
 
+== References
+
+[[PROF]]
+[PROF]:: World Wide Web Consortium, _The Profiles Vocabulary_, W3C Working Group Note (18 December 2019). https://www.w3.org/TR/dx-prof/
