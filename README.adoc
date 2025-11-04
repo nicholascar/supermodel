@@ -1,6 +1,11 @@
+:toc: left
+
 = Supermodel Model
 
 A model for the integration of multiple models.
+
+[quote, Kate Moss]
+Never complain, never explain
 
 == Metadata
 
@@ -10,15 +15,15 @@ A model for the integration of multiple models.
 |**Preferred Label** | Supermodel
 |**Definition** | A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
 |**Created** | 2021-12-10
-|**Modified** | 2025-02-15
-|**Issued** | 0000-00-00
+|**Modified** | 2025-11-05
+|**Issued** | -
 |**Creator** | https://orcid.org/0000-0002-8742-7730[Nicholas J. Car]
 |**Publisher** | -
 
 _This model is not officially published by an Australian government organisation_
-|**Provenance** | This model has been created in response to the needs of several projects that require both specialised component models and yet integration of them. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, Queensland Spatial Information Addressing & Cadastral modelling 2022 and the Indigenous Data Network catalogue modelling, 2021-2023.
+|**Provenance** | This model wan created in response to the needs of several projects that require both specialised models for different datasets and their integration. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information Addressing & Cadastral modelling 2022 - 2025], the https://data.idnau.org[Indigenous Data Network catalogue modelling, 2021-2023], the https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[Geological Survey of WA's Knowledge Graph, 2025] and the https://eia.testing.bdr.gov.au/[_EIA Demonstrator_, 2025].
 |**Status** | Draft
-|**Version** | `sup:0.0.1`
+|**Version** | `:0.0.2`
 |**Code Repository** | https://github.com/nicholascar/supermodel
 |**License** | https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 International (CC BY 4.0)]
 |**Copyright** | &copy; Nicholas J. Car, 2021-2025
@@ -27,28 +32,43 @@ _This model is not officially published by an Australian government organisation
 
 == Introduction
 
+[quote, Cindy Crawford]
+I always say, even I don't wake up looking like Cindy Crawford
+
 [.right.text-center]
 image::images/sm-overview.svg["GSWA Supermodel",width=50%]
-_An informal overview of the https://kurrawong.github.io/gswa-supermodel/[GSWA Supermodel] and its various parts._
+_An informal overview of the https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[GSWA Supermodel] and its various parts._
+
+This model provides a structure to the creation of sets of models that can both represent specialised datasets and allow them to be integrated. It does this by promoting the modelling of the specialised datasets while reusing modelling patterns and reference values from background models, vocabularies and datasets, as much as possible.
+
+EXAMPLE:: Say you have two datasets that you want to integrate: *Field Measurements of Trees* and *Vegetation Height* from ariel survey. To integrate them, you will need to find as many "join" points as possible between them, perhaps: _spatial location_ - modelled in both using the same pattern, so they can be spatially queried together and also _feature property: height_ - a common way of recording the "height" property of something with common units of measure, commensurate measurement techniques etc. You could also group data from both datasets by a reporting regions background dataset, rather than just spatially intersecting them. The _feature property: height_ join point is a domain-specific pattern likely with vocabulary terms used within it, e.g. for particular methods.
+
+=== Model Roles
+
+Models used for data to be integrated are called _Component Models_. They necessarily model their specific dataset's unique data but should reuse patterns from _Background Models_ as much as possible and use particular values from _Background Vocabularies_ where they can too.
+
+=== Formal Model Relations
+
+Models in a Supermodel need to declare their dependence on other models when reusing parts from them. For example, if a _Background Model_ called *Feature Observations* has a pattern for _Feature Property Measurements_, then a _Component Model_ of *Field Measurements of Trees* implementing that pattern will need to state that it is a _profile of_ *Feature Observations*.
+
+This statement of dependence is formalised in Supermodels using <<PROF, _The Profiles Vocabulary_>> which makes it a _Background Model_ too.
+
+_Component Models_ much profile - depend on - as many common _Background Models_ or other _Component Models_ as possible and _Background Models_ may profile other _Background Models_ too. The Supermodel is then a set of models with all dependencies shown and no _Component Models_ depending on nothing: this would indicate they are un-integrated. Fundamental _Background Models_ will likely not depend on anything, other than perhaps modelling system models, such as <<OWL, _Web Ontology Language_>> or <<RDFS, _Resource Description Framework Schema_>>.
 
 
-This model provides elements to relate other models to one another and to assign them roles indicating what parts they play with respect to one another. In doing this, this _Supermodel_ enables both the establishment of specialised models for an initiative's specialised domain data and also for their integration.
+== Model
 
-Supermodels require that a set of models be nominated for use (they may be newly created but are often taken from pre-existing, fairly generic, models) and given the roles of _Integrative Model_. All data within the Supermodel scope is expected to be implemented according to elements and patterns from them, at least generically. Elements and patterns from these models are what people can expect to find in use at all points in within the Supermodel, even if parts of it extend beyond these into very specialised versions of them.
+[quote, Linda Evangelista]
+We don't wake up for less than $10,000 a day
 
-Models with role _Component Model_ specialise the integrative models' elements and patterns can be created for each _dataset_ within the Supermodel's remit. These Component Models can implement the specialised elements and patterns needed to represent their unique content but _MUST_ be fully compatible with the Integrative Models. To ensure this is the case, profiling mechanisms from _The Profiles Vocabulary_ <<PROF>> are used to relate Component and Integrative models.
+The Model for a Supermodel is summarised as follows:
 
-The total set of identified existing models from which Component Models draw existing elements and patterns but which are not the common integrative models are given the role _Background Model_. The Supermodel mechanisms require that all model elements and patterns not created specifically for its domain work come from identified models with either the _Integrative_ or _Background_ model roles.
+* each model is represented as a `owl:Ontology`
+* each model must indicate depends on other models that it reuses elements from my use of the `prof:isProfileOf` predicate
 
-// NOTE: All the modelling here is Semantic Web modelling but that doesn't mean that implementations of Supermodels must be implemented in Semantic-Web-native systems: several Supermodel implementations indicate other forms of implementation, such as relational databases.
+#TODO: complete this section#
 
-// https://www.w3.org/standards/semanticweb/[Semantic Web]
-
-== Supermodel Model
-
-[quote, Kate Moss]
-I don’t think modeling is a career I’m going to pursue.
-
+////
 === Roles
 Each model and vocabulary included within an instance of a Supermodel has at least one of the following Roles assigned to it:
 
@@ -80,18 +100,27 @@ Within Supermodel practice, profiling another model means using elements and pat
 For example, a model with the _Integrative Model_ role might declare a class for `Person` and require that all `Person` instances have present one predicate of `height` indicating a `float` value. A profiling model would be free to declare a subclass of `Person` called `Student` with specialised predicates relating to student things, but it must still ensure that all instances of `Student` require a `height` predicate so that they are still valid `Person` instances.
 
 Profiling between models within a Supermodel is indicated with the `prof:isProfileOf` predicate on the main model element, usually an instance of `owl:Ontology`.
-
+////
 
 
 == Demonstrations
 
-* https://kurrawong.github.io/gswa-supermodel/[Geological survey of WA's Supermodel]
+[quote, Janice Dickinson (attributed)]
+There are 3 billion women in the world who don't look like supermodels and only 8 that do
+
+* https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[Geological survey of WA's Supermodel]
 * https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information's Supermodel]
-
-
+* https://linked.data.gov.au/def/eia-supermodel[Environmental Information Australia's Supermodel]
+* https://linked.data.gov.au/def/abis[Australian Biodiversity Information Standard - a Supermodel]
 
 
 == References
 
+[[OWL]]
+[OWL]:: World Wide Web Consortium, _OWL 2 Web Ontology Language_, W3C Recommendation (11 December 2012). https://www.w3.org/TR/owl2-overview/
+
 [[PROF]]
 [PROF]:: World Wide Web Consortium, _The Profiles Vocabulary_, W3C Working Group Note (18 December 2019). https://www.w3.org/TR/dx-prof/
+
+[[RDFS]]
+[RDFS]:: World Wide Web Consortium, _RDF Schema 1.1_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf-schema/
