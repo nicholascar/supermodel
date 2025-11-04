@@ -433,15 +433,38 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 @media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Supermodel Model</h1>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_metadata">Metadata</a></li>
+<li><a href="#_introduction">Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_model_roles">Model Roles</a></li>
+<li><a href="#_formal_model_relations">Formal Model Relations</a></li>
+</ul>
+</li>
+<li><a href="#_model">Model</a></li>
+<li><a href="#_demonstrations">Demonstrations</a></li>
+<li><a href="#_references">References</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph">
 <p>A model for the integration of multiple models.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+Never complain, never explain
+</blockquote>
+<div class="attribution">
+&#8212; Kate Moss
+</div>
 </div>
 </div>
 </div>
@@ -472,11 +495,11 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modified</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-02-15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2025-11-05</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Issued</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0000-00-00</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">-</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Creator</strong></p></td>
@@ -489,7 +512,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Provenance</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">This model has been created in response to the needs of several projects that require both specialised component models and yet integration of them. The projects were: Geoscience Australia&#8217;s <em>Sites, Samples Surveys</em> modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, Queensland Spatial Information Addressing &amp; Cadastral modelling 2022 and the Indigenous Data Network catalogue modelling, 2021-2023.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">This model wan created in response to the needs of several projects that require both specialised models for different datasets and their integration. The projects were: Geoscience Australia&#8217;s <em>Sites, Samples Surveys</em> modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, <a href="https://linked.data.gov.au/def/qsi-supermodel">Queensland Spatial Information Addressing &amp; Cadastral modelling 2022 - 2025</a>, the <a href="https://data.idnau.org">Indigenous Data Network catalogue modelling, 2021-2023</a>, the <a href="https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/">Geological Survey of WA&#8217;s Knowledge Graph, 2025</a> and the <a href="https://eia.testing.bdr.gov.au/"><em>EIA Demonstrator</em>, 2025</a>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong></p></td>
@@ -497,7 +520,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Version</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sup:0.0.1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:0.0.2</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code Repository</strong></p></td>
@@ -522,109 +545,106 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sect1">
 <h2 id="_introduction">Introduction</h2>
 <div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+I always say, even I don&#8217;t wake up looking like Cindy Crawford
+</blockquote>
+<div class="attribution">
+&#8212; Cindy Crawford
+</div>
+</div>
 <div class="imageblock right text-center">
 <div class="content">
 <img src="images/sm-overview.svg" alt="GSWA Supermodel" width="50%">
 </div>
 </div>
 <div class="paragraph">
-<p><em>An informal overview of the <a href="https://kurrawong.github.io/gswa-supermodel/">GSWA Supermodel</a> and its various parts.</em></p>
+<p><em>An informal overview of the <a href="https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/">GSWA Supermodel</a> and its various parts.</em></p>
 </div>
 <div class="paragraph">
-<p>This model provides elements to relate other models to one another and to assign them roles indicating what parts they play with respect to one another. In doing this, this <em>Supermodel</em> enables both the establishment of specialised models for an initiative&#8217;s specialised domain data and also for their integration.</p>
+<p>This model provides a structure to the creation of sets of models that can both represent specialised datasets and allow them to be integrated. It does this by promoting the modelling of the specialised datasets while reusing modelling patterns and reference values from background models, vocabularies and datasets, as much as possible.</p>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">EXAMPLE</dt>
+<dd>
+<p>Say you have two datasets that you want to integrate: <strong>Field Measurements of Trees</strong> and <strong>Vegetation Height</strong> from ariel survey. To integrate them, you will need to find as many "join" points as possible between them, perhaps: <em>spatial location</em> - modelled in both using the same pattern, so they can be spatially queried together and also <em>feature property: height</em> - a common way of recording the "height" property of something with common units of measure, commensurate measurement techniques etc. You could also group data from both datasets by a reporting regions background dataset, rather than just spatially intersecting them. The <em>feature property: height</em> join point is a domain-specific pattern likely with vocabulary terms used within it, e.g. for particular methods.</p>
+</dd>
+</dl>
+</div>
+<div class="sect2">
+<h3 id="_model_roles">Model Roles</h3>
+<div class="paragraph">
+<p>Models used for data to be integrated are called <em>Component Models</em>. They necessarily model their specific dataset&#8217;s unique data but should reuse patterns from <em>Background Models</em> as much as possible and use particular values from <em>Background Vocabularies</em> where they can too.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_formal_model_relations">Formal Model Relations</h3>
+<div class="paragraph">
+<p>Models in a Supermodel need to declare their dependence on other models when reusing parts from them. For example, if a <em>Background Model</em> called <strong>Feature Observations</strong> has a pattern for <em>Feature Property Measurements</em>, then a <em>Component Model</em> of <strong>Field Measurements of Trees</strong> implementing that pattern will need to state that it is a <em>profile of</em> <strong>Feature Observations</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Supermodels require that a set of models be nominated for use (they may be newly created but are often taken from pre-existing, fairly generic, models) and given the roles of <em>Integrative Model</em>. All data within the Supermodel scope is expected to be implemented according to elements and patterns from them, at least generically. Elements and patterns from these models are what people can expect to find in use at all points in within the Supermodel, even if parts of it extend beyond these into very specialised versions of them.</p>
+<p>This statement of dependence is formalised in Supermodels using <a href="#PROF"><em>The Profiles Vocabulary</em></a> which makes it a <em>Background Model</em> too.</p>
 </div>
 <div class="paragraph">
-<p>Models with role <em>Component Model</em> specialise the integrative models' elements and patterns can be created for each <em>dataset</em> within the Supermodel&#8217;s remit. These Component Models can implement the specialised elements and patterns needed to represent their unique content but <em>MUST</em> be fully compatible with the Integrative Models. To ensure this is the case, profiling mechanisms from <em>The Profiles Vocabulary</em> <a href="#PROF">[PROF]</a> are used to relate Component and Integrative models.</p>
+<p><em>Component Models</em> much profile - depend on - as many common <em>Background Models</em> or other <em>Component Models</em> as possible and <em>Background Models</em> may profile other <em>Background Models</em> too. The Supermodel is then a set of models with all dependencies shown and no <em>Component Models</em> depending on nothing: this would indicate they are un-integrated. Fundamental <em>Background Models</em> will likely not depend on anything, other than perhaps modelling system models, such as <a href="#OWL"><em>Web Ontology Language</em></a> or <a href="#RDFS"><em>Resource Description Framework Schema</em></a>.</p>
 </div>
-<div class="paragraph">
-<p>The total set of identified existing models from which Component Models draw existing elements and patterns but which are not the common integrative models are given the role <em>Background Model</em>. The Supermodel mechanisms require that all model elements and patterns not created specifically for its domain work come from identified models with either the <em>Integrative</em> or <em>Background</em> model roles.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_supermodel_model">Supermodel Model</h2>
+<h2 id="_model">Model</h2>
 <div class="sectionbody">
 <div class="quoteblock">
 <blockquote>
-I don’t think modeling is a career I’m going to pursue.
+We don&#8217;t wake up for less than $10,000 a day
 </blockquote>
 <div class="attribution">
-&#8212; Kate Moss
+&#8212; Linda Evangelista
 </div>
-</div>
-<div class="sect2">
-<h3 id="_roles">Roles</h3>
-<div class="paragraph">
-<p>Each model and vocabulary included within an instance of a Supermodel has at least one of the following Roles assigned to it:</p>
-</div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">Integrative Model</dt>
-<dd>
-<p>Role for a model that is specialised and extended by multiple models with Component Model role</p>
-</dd>
-<dt class="hdlist1">Component Model</dt>
-<dd>
-<p>Role for individual datasets within a Supermodels' remit which specialise and extend models with the Integrative and Background Model roles</p>
-</dd>
-<dt class="hdlist1">Background Model</dt>
-<dd>
-<p>Role for a model that is specialised and extended by some models with Component Model role but not all</p>
-</dd>
-<dt class="hdlist1">Vocabulary</dt>
-<dd>
-<p>Role for a controlled list of terms used in any of the Supermodel&#8217;s models</p>
-</dd>
-</dl>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_mechanisms">Mechanisms</h3>
-<div class="paragraph">
-<p>The Supermodel and models within it must use a consistent modelling mechanism that allows for the modelling of both the content of the various models and relations between them, as per the section next.</p>
 </div>
 <div class="paragraph">
-<p>All Supermodels implemented to date use <a href="https://www.w3.org/standards/semanticweb/">Semantic Web</a> modelling techniques and, specifically, the <a href="#RDF">[RDF]</a>, <a href="#RDFS">[RDFS]</a> and <a href="#OWL">[OWL]</a> fundamental models.</p>
+<p>The Model for a Supermodel is summarised as follows:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>each model is represented as a <code>owl:Ontology</code></p>
+</li>
+<li>
+<p>each model must indicate depends on other models that it reuses elements from my use of the <code>prof:isProfileOf</code> predicate</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>These models are given the role of <em>Background Model</em> within a Supermodel but are often not listed in overview diagrams, due to their low-level nature.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_model_relations">Model Relations</h3>
-<div class="paragraph">
-<p>Models within the Supermodel relate to one another in various ways. The most common way is for one to <em>profile</em> another where profile means:</p>
-</div>
-<div class="quoteblock">
-<blockquote>
-a specification that constrains, extends, combines, or provides guidance or explanation about the usage of other specifications <a href="#PROF">[PROF]</a>
-</blockquote>
-</div>
-<div class="paragraph">
-<p>Within Supermodel practice, profiling another model means using elements and patterns from it and specialising and extending them while ensuring that any data conforming to the profiling model still conforms to the profiled model.</p>
-</div>
-<div class="paragraph">
-<p>For example, a model with the <em>Integrative Model</em> role might declare a class for <code>Person</code> and require that all <code>Person</code> instances have present one predicate of <code>height</code> indicating a <code>float</code> value. A profiling model would be free to declare a subclass of <code>Person</code> called <code>Student</code> with specialised predicates relating to student things, but it must still ensure that all instances of <code>Student</code> require a <code>height</code> predicate so that they are still valid <code>Person</code> instances.</p>
-</div>
-<div class="paragraph">
-<p>Profiling between models within a Supermodel is indicated with the <code>prof:isProfileOf</code> predicate on the main model element, usually an instance of <code>owl:Ontology</code>.</p>
-</div>
+<p><mark>TODO: complete this section</mark></p>
 </div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_demonstrations">Demonstrations</h2>
 <div class="sectionbody">
+<div class="quoteblock">
+<blockquote>
+There are 3 billion women in the world who don&#8217;t look like supermodels and only 8 that do
+</blockquote>
+<div class="attribution">
+&#8212; Janice Dickinson (attributed)
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://kurrawong.github.io/gswa-supermodel/">Geological survey of WA&#8217;s Supermodel</a></p>
+<p><a href="https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/">Geological survey of WA&#8217;s Supermodel</a></p>
 </li>
 <li>
 <p><a href="https://linked.data.gov.au/def/qsi-supermodel">Queensland Spatial Information&#8217;s Supermodel</a></p>
+</li>
+<li>
+<p><a href="https://linked.data.gov.au/def/eia-supermodel">Environmental Information Australia&#8217;s Supermodel</a></p>
+</li>
+<li>
+<p><a href="https://linked.data.gov.au/def/abis">Australian Biodiversity Information Standard - a Supermodel</a></p>
 </li>
 </ul>
 </div>
@@ -633,6 +653,14 @@ a specification that constrains, extends, combines, or provides guidance or expl
 <div class="sect1">
 <h2 id="_references">References</h2>
 <div class="sectionbody">
+<div id="OWL" class="dlist">
+<dl>
+<dt class="hdlist1">[OWL]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>OWL 2 Web Ontology Language</em>, W3C Recommendation (11 December 2012). <a href="https://www.w3.org/TR/owl2-overview/" class="bare">https://www.w3.org/TR/owl2-overview/</a></p>
+</dd>
+</dl>
+</div>
 <div id="PROF" class="dlist">
 <dl>
 <dt class="hdlist1">[PROF]</dt>
@@ -641,12 +669,20 @@ a specification that constrains, extends, combines, or provides guidance or expl
 </dd>
 </dl>
 </div>
+<div id="RDFS" class="dlist">
+<dl>
+<dt class="hdlist1">[RDFS]</dt>
+<dd>
+<p>World Wide Web Consortium, <em>RDF Schema 1.1</em>, W3C Recommendation (25 February 2014). <a href="https://www.w3.org/TR/rdf-schema/" class="bare">https://www.w3.org/TR/rdf-schema/</a></p>
+</dd>
+</dl>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-03-03 22:10:41 UTC
+Last updated 2025-11-04 15:16:39 UTC
 </div>
 </div>
 </body>
