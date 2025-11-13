@@ -440,13 +440,34 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_metadata">Metadata</a></li>
+<li><a href="#_abstract">Abstract</a></li>
 <li><a href="#_introduction">Introduction</a>
 <ul class="sectlevel2">
+<li><a href="#_semantic_web">Semantic Web</a></li>
+<li><a href="#_formal_relations">Formal Relations</a></li>
 <li><a href="#_model_roles">Model Roles</a></li>
-<li><a href="#_formal_model_relations">Formal Model Relations</a></li>
 </ul>
 </li>
-<li><a href="#_model">Model</a></li>
+<li><a href="#_methodology">Methodology</a>
+<ul class="sectlevel2">
+<li><a href="#_1_identify_datasets">1. Identify Datasets</a></li>
+<li><a href="#_2_identify_dataset_models">2. Identify Dataset Models</a></li>
+<li><a href="#_3_extract_controlled_terms">3. Extract controlled terms</a></li>
+<li><a href="#_4_look_for_modelling_patterns">4. Look for modelling patterns</a></li>
+<li><a href="#_5_identify_general_purpose_models">5. Identify general-purpose models</a></li>
+<li><a href="#_6_formalise_relations">6. Formalise Relations</a></li>
+</ul>
+</li>
+<li><a href="#_model">Model</a>
+<ul class="sectlevel2">
+<li><a href="#_summary">Summary</a></li>
+<li><a href="#_namespaces">Namespaces</a></li>
+<li><a href="#_classes">Classes</a></li>
+<li><a href="#_predicates">Predicates</a></li>
+<li><a href="#_validator">Validator</a></li>
+<li><a href="#_roles">Roles</a></li>
+</ul>
+</li>
 <li><a href="#_demonstrations">Demonstrations</a></li>
 <li><a href="#_references">References</a></li>
 </ul>
@@ -473,8 +494,8 @@ Never complain, never explain
 <div class="sectionbody">
 <table class="tableblock frame-none grid-none" style="width: 75%;">
 <colgroup>
-<col style="width: 16.6666%;">
-<col style="width: 83.3334%;">
+<col style="width: 28.5714%;">
+<col style="width: 71.4286%;">
 </colgroup>
 <tbody>
 <tr>
@@ -495,7 +516,7 @@ Never complain, never explain
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Modified</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2025-11-05</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2025-11-13</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Issued</strong></p></td>
@@ -507,8 +528,8 @@ Never complain, never explain
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Publisher</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">-</p>
-<p class="tableblock"><em>This model is not officially published by an Australian government organisation</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://kurrawong.ai">KurrawongAI</a></p>
+<p class="tableblock"><em>This model is not yet officially adopted by a government organisation.</em></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Provenance</strong></p></td>
@@ -516,15 +537,15 @@ Never complain, never explain
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Status</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Draft</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Stable</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Version</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:0.0.2</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>:1.0.0</code></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Code Repository</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/nicholascar/supermodel" class="bare">https://github.com/nicholascar/supermodel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/kurrawong/supermodel" class="bare">https://github.com/kurrawong/supermodel</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>License</strong></p></td>
@@ -532,7 +553,7 @@ Never complain, never explain
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Copyright</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&copy; Nicholas J. Car, 2021-2025</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&copy; Nicholas J. Car, 2021-2024, KurrawongAI, 2025</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Machine-readable form (RDF)</strong></p></td>
@@ -540,6 +561,17 @@ Never complain, never explain
 </tr>
 </tbody>
 </table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_abstract">Abstract</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A Supermodel is an enterprise data model that provides a structure for the creation of models for specialised datasets that allow for their uniqueness to be preserved but also provide for their deep integration.</p>
+</div>
+<div class="paragraph">
+<p>This model contains two parts: a <em>Methodology</em> and a <em>Model</em> which describe how to approach supermodel modelling and how to formulate technical models, respectively.</p>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -553,41 +585,274 @@ I always say, even I don&#8217;t wake up looking like Cindy Crawford
 &#8212; Cindy Crawford
 </div>
 </div>
+<div class="paragraph">
+<p>The Supermodel approach to modelling provides a structure to the methods of creation and technical formulation of sets of models that both represent specialised datasets and allow them to be integrated. It does this by ensuring that the modelling of the specialised datasets, while implementing custom model elements for their unique content, also reuses model elements from background models and controlled terms from vocabularies and reference datasets, as much as possible.</p>
+</div>
 <div class="imageblock right text-center">
 <div class="content">
-<img src="images/sm-overview.svg" alt="GSWA Supermodel" width="50%">
+<img src="images/gswa-supermodel.svg" alt="GSWA Supermodel" width="75%">
 </div>
 </div>
-<div class="paragraph">
+<div class="paragraph text-center">
 <p><em>An informal overview of the <a href="https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/">GSWA Supermodel</a> and its various parts.</em></p>
 </div>
 <div class="paragraph">
-<p>This model provides a structure to the creation of sets of models that can both represent specialised datasets and allow them to be integrated. It does this by promoting the modelling of the specialised datasets while reusing modelling patterns and reference values from background models, vocabularies and datasets, as much as possible.</p>
+<p>The figure above shows the parts of the <a href="https://www.wa.gov.au/organisation/department-of-mines-petroleum-and-exploration/geological-survey-of-western-australia">Geological Survey of Western Australia</a>'s Supermodel of their geological and resource sector regulation data. It shows models for specialised geological datasets such as <em>Boreholes</em>, <em>Samples</em> and <em>Mining Authorisation</em> as well as more generic <em>Background Models</em> such as <a href="https://www.w3.org/TR/vocab-ssn/"><em>SOSA</em></a> (for observations and measurements), <a href="http://www.opengis.net/doc/IS/geosparql/1.1"><em>GeoSPARQL</em></a> (sor spatial features) and so on. It also indicates some of the vocabularies of controlled terms used by both <em>Component</em> and <em>Background Models</em>, such as <em>Minerals</em> and <em>Commodities</em>.</p>
 </div>
-<div class="dlist">
-<dl>
-<dt class="hdlist1">EXAMPLE</dt>
-<dd>
-<p>Say you have two datasets that you want to integrate: <strong>Field Measurements of Trees</strong> and <strong>Vegetation Height</strong> from ariel survey. To integrate them, you will need to find as many "join" points as possible between them, perhaps: <em>spatial location</em> - modelled in both using the same pattern, so they can be spatially queried together and also <em>feature property: height</em> - a common way of recording the "height" property of something with common units of measure, commensurate measurement techniques etc. You could also group data from both datasets by a reporting regions background dataset, rather than just spatially intersecting them. The <em>feature property: height</em> join point is a domain-specific pattern likely with vocabulary terms used within it, e.g. for particular methods.</p>
-</dd>
-</dl>
+<div class="paragraph">
+<p>The complete documentation for the GSWA Supermodel <a href="https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/">is online</a>.</p>
+</div>
+<div id="NOTE" class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p><strong>EXAMPLE</strong></p>
+</div>
+<div class="paragraph">
+<p>Say you have two environmental datasets that you want to integrate: <strong>Field Measurements of Trees</strong> and <strong>Aerial Vegetation Heights</strong>. To integrate them, you will need to find as many integration points as possible between them. Clearly <em>spatial location</em> is an easy integration point as imagery and measurements can be located, however we need more than this. We need integration on aspects of the tree &amp; vegetation height information as well, to get commensurate data. For this, we need a model of metrology - measurement science - to tease out the <em>procedures</em> of measurement, the <em>properties</em> of things observed as well as <em>units of measure</em>. For this we can use <a href="https://www.w3.org/TR/vocab-ssn/"><em>SOSA</em></a> as a background model as it provides defined relations for these things and indicates how similar and different <em>procedures</em> and so on can be identified.</p>
+</div>
+<div class="imageblock right text-center">
+<div class="content">
+<img src="images/integration-points.svg" alt="Demo integration points" width="50%">
+</div>
+</div>
+<div class="paragraph">
+<p>Using SOSA, we can record the <em>Observed Properties</em>, <em>Procedures</em> and <em>Results</em> of <em>Observations</em> and link individual datasets to different instances of them. Even though the <em>Procedures</em> and other aspects of the data will be different, we&#8217;ve achieved a common data pattern integration point.</p>
+</div>
+<div class="paragraph">
+<p>With this pattern applied to the datasets, we may be able to relate values in one to the other and therefore "deeply" integrate them.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_semantic_web">Semantic Web</h3>
+<div class="paragraph">
+<p>All the <em>formal relations</em>, <em>model roles</em> and the <a href="#_model">Model</a> given here are conceptualised as part of the formal, machine-readable, Internet of distributed resources known as the <a href="https://en.wikipedia.org/wiki/Semantic_Web">Semantic Web</a>. The Semantic Web is a model-driven and yet flexible way of representing concepts and the relations between them that acts as a giant, distributed, database across the Internet.</p>
+</div>
+<div class="paragraph">
+<p>Semantic Web resources - data, models &amp; vocabularies - are the best form of digital resources known for reuse since they require all elements to be strongly defined - nothing is left to interpretation - and they are optimised for distribution and referencing.</p>
+</div>
+<div class="paragraph">
+<p>While many useful models are not Semantic Web models, all models can be realised as such and the Semantic Web formulation of models and data is necessary for supermodels so that many existing models can be used and so things created for a particular supermodel themselves can be maximally reused.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_formal_relations">Formal Relations</h3>
+<div class="paragraph">
+<p>Elements in a Supermodel must be identified and related in a formal (precise, machine-readable, model-defined) way, which requires modelling of the supermodel content according to the <a href="#_model">Model</a> section below. This allows for more than just a generally organised way of arranging information that an informal <em>guide</em> allows for, such as automated data validation, dependency mapping and aggregation of supermodels into even larger supermodels. These benefits are enormous when supermodels get large in terms of breadth and scale of data.</p>
+</div>
+<div class="paragraph">
+<p>Critical to creating formal supermodel elements relations are element identification, declarations of dependence and conformance claims. Establishing these are detailed in the <a href="#_methodology">Methodology</a> section below.</p>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_model_roles">Model Roles</h3>
 <div class="paragraph">
-<p>Models used for data to be integrated are called <em>Component Models</em>. They necessarily model their specific dataset&#8217;s unique data but should reuse patterns from <em>Background Models</em> as much as possible and use particular values from <em>Background Vocabularies</em> where they can too.</p>
+<p>One aspect of formal supermodel element descriptions are the roles that elements play within a supermodel scope. Particular models may be for the representation of the data within datasets to be integrated are called - <em>Component Model</em> role - or they may be used by other models as reference - <em>Background Model</em> role - or perhaps both (see the GSWA overview figure at the top).</p>
+</div>
+<div class="paragraph">
+<p>The roles for supermodel elements are indicated in the formal modelling of it, as per the <a href="#_model">Model</a> section below, and the roles themselves are details in the <a href="#_roles">Roles</a> section.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_methodology">Methodology</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section describes how to create a supermodel. In outline:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Identify Datasets</p>
+</li>
+<li>
+<p>Identify Dataset Models</p>
+<div class="ulist">
+<ul>
+<li>
+<p>assume one will be implemented unless all elements of the model can be modelled using <a href="#_background_model">Background Models</a> or other Dataset&#8217;s Component Models</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Extract controlled terms</p>
+<div class="ulist">
+<ul>
+<li>
+<p>within the datasets and models and term these <a href="#_vocabulary">Vocabularies</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Look for modelling patterns</p>
+<div class="ulist">
+<ul>
+<li>
+<p>within the Component Models. Taken from general-purpose models</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Identify general-purpose models</p>
+<div class="ulist">
+<ul>
+<li>
+<p>as <a href="#_background_model">Background Model</a>, for those used for modelling patterns used in Component Models</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Formalise Relations</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the dependence of Component Models on Background Models, roles and so on, as per the <a href="#_model">Model</a> section</p>
+</li>
+</ul>
+</div>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="_1_identify_datasets">1. Identify Datasets</h3>
+<div class="paragraph">
+<p>This step can be straightforward: it may be wellknown which datasets are within scope for a supermodel.</p>
+</div>
+<div class="paragraph">
+<p>Datasets may be formulated according to any logic that makes sense to the supermodel creators. Some options are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>by governance grouping</p>
+<div class="ulist">
+<ul>
+<li>
+<p>consider all the data governed as a distinct part as a dataset</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>by subdomain</p>
+<div class="ulist">
+<ul>
+<li>
+<p>consider all the data within a subdomain of the supermodel as a dataset</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These usually provide better datasets criteria than data by time or space as these dimensions of data can be modelled within a larger dataset.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_formal_model_relations">Formal Model Relations</h3>
+<h3 id="_2_identify_dataset_models">2. Identify Dataset Models</h3>
 <div class="paragraph">
-<p>Models in a Supermodel need to declare their dependence on other models when reusing parts from them. For example, if a <em>Background Model</em> called <strong>Feature Observations</strong> has a pattern for <em>Feature Property Measurements</em>, then a <em>Component Model</em> of <strong>Field Measurements of Trees</strong> implementing that pattern will need to state that it is a <em>profile of</em> <strong>Feature Observations</strong>.</p>
+<p>For each dataset, a formal and separate model must be either created or borrowed.</p>
 </div>
 <div class="paragraph">
-<p>This statement of dependence is formalised in Supermodels using <a href="#PROF"><em>The Profiles Vocabulary</em></a> which makes it a <em>Background Model</em> too.</p>
+<p>Assume that each dataset will have a Component Model, but expect and aim to deprecate any you can for shared models and Background Model reuse as this leads to better integration.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_extract_controlled_terms">3. Extract controlled terms</h3>
+<div class="paragraph">
+<p>Lookup tables in databases, taxonomies and flat lists of controlled terms need to be extracted from datasets and models for them and placed into stand-along vocabularies. This allows for reuse of their elements across datasets creating more integration points.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_look_for_modelling_patterns">4. Look for modelling patterns</h3>
+<div class="paragraph">
+<p>This is the hardest step.</p>
 </div>
 <div class="paragraph">
-<p><em>Component Models</em> much profile - depend on - as many common <em>Background Models</em> or other <em>Component Models</em> as possible and <em>Background Models</em> may profile other <em>Background Models</em> too. The Supermodel is then a set of models with all dependencies shown and no <em>Component Models</em> depending on nothing: this would indicate they are un-integrated. Fundamental <em>Background Models</em> will likely not depend on anything, other than perhaps modelling system models, such as <a href="#OWL"><em>Web Ontology Language</em></a> or <a href="#RDFS"><em>Resource Description Framework Schema</em></a>.</p>
+<p>It is critical to look within the models for each dataset and define small modelling patterns that can be reused in them. This pattern reuse teases out aspects of the data that can be linked across different datasets - turned into integration points - but identifying parts that can be placed into vocabularies, common classes of information and so on.</p>
+</div>
+<div id="NOTE" class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>It can be very hard to understand what makes for a sensible pattern without extensive knowledge of lots of reference models within a domain relevant to the supermodel at hand.</p>
+</div>
+<div class="paragraph">
+<p>Some approaches that may assist here are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>searching across standards bodies' models</p>
+<div class="ulist">
+<ul>
+<li>
+<p>the <a href="https://www.w3.org"><strong>World Wide Web Consortium</strong></a>'s fundamental models for <a href="https://www.w3.org/TR/vocab-ssn/">observations &amp; measurement</a>, <a href="https://www.w3.org/TR/owl-time/">time</a>, <a href="https://www.w3.org/TR/vocab-org/">organisations</a>, <a href="https://www.w3.org/TR/vocab-data-cube/">statistical data cubes</a></p>
+</li>
+<li>
+<p>the <a href="https://www.ogc.org/"><strong>Open Geospatial Consortium</strong></a>'s <a href="http://www.opengis.net/doc/IS/geosparql/1.1">GeoSPARQL</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>looking within the various domain portals</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://agroportal.lirmm.fr">AgroPortal</a></p>
+</li>
+<li>
+<p><a href="https://bioportal.bioontology.org/">BioPortal</a></p>
+</li>
+<li>
+<p><a href="https://earthportal.eu/">EarthPortal</a></p>
+</li>
+<li>
+<p><a href="https://ecoportal.lifewatch.eu/">EcoPortal</a></p>
+</li>
+<li>
+<p>&#8230;&#8203;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>using <a href="https://schema.org">schema.org</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p>schema.org is a well-known, simple, general-purpose model</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Searching for words in your domain of interest in the above locations will lead on to further resources elsewhere, as part of the <a href="#_semantic_web">Semantic Web</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_identify_general_purpose_models">5. Identify general-purpose models</h3>
+<div class="paragraph">
+<p>All general purpose models that have had their whole or parts reused by Component Models must be included as <a href="#_background_model">Background Models</a> within the supermodel.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_formalise_relations">6. Formalise Relations</h3>
+<div class="paragraph">
+<p>Once the above steps have been carried out, a formal description of the supermodel must be made, according to the <a href="#_model">Model</a> below.</p>
+</div>
+<div class="paragraph">
+<p>This means defining a <code>Supermodel</code> object, all the Component &amp; Background Models and Vocabularies within it, as well as each&#8217;s role and relations between them.</p>
 </div>
 </div>
 </div>
@@ -603,21 +868,301 @@ We don&#8217;t wake up for less than $10,000 a day
 &#8212; Linda Evangelista
 </div>
 </div>
+<div class="sect2">
+<h3 id="_summary">Summary</h3>
 <div class="paragraph">
 <p>The Model for a Supermodel is summarised as follows:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
+<p>all models are formulated as Semantic Web models</p>
+<div class="ulist">
+<ul>
+<li>
+<p>even when data systems are not implemented as native Semantic Web applications</p>
+</li>
+<li>
 <p>each model is represented as a <code>owl:Ontology</code></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p>each model must indicate depends on other models that it reuses elements from my use of the <code>prof:isProfileOf</code> predicate</p>
 </li>
 </ul>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_namespaces">Namespaces</h3>
 <div class="paragraph">
-<p><mark>TODO: complete this section</mark></p>
+<p>Prefixes in the table below for <a href="https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier">IRI</a> are used to indicate the identity of elements within this model.</p>
+</div>
+<table class="tableblock frame-none grid-none stretch">
+<colgroup>
+<col style="width: 10%;">
+<col style="width: 40%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Prefix</th>
+<th class="tableblock halign-left valign-top">Namespace</th>
+<th class="tableblock halign-left valign-top">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>ex</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://example.com/" class="bare">http://example.com/</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Generic examples</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>geo</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.opengis.net/ont/geosparql#" class="bare">http://www.opengis.net/ont/geosparql#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">OGC GeoSPARQL</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>owl</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/2002/07/owl#" class="bare">http://www.w3.org/2002/07/owl#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Web Ontology Language ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>prof</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/ns/dx/prof/" class="bare">http://www.w3.org/ns/dx/prof/</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Profiles Vocabulary</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>rdfs</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/2000/01/rdf-schema#" class="bare">http://www.w3.org/2000/01/rdf-schema#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RDF Schema ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>sosa</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/ns/sosa/" class="bare">http://www.w3.org/ns/sosa/</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sensor, Observation, Sample, and Actuator ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>schema</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="https://schema.org/" class="bare">https://schema.org/</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">schema.org model</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>skos</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/2004/02/skos/core#" class="bare">http://www.w3.org/2004/02/skos/core#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Simple Knowledge Organization System (SKOS) ontology</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>xsd</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="http://www.w3.org/2001/XMLSchema#" class="bare">http://www.w3.org/2001/XMLSchema#</a></code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XML Schema Definitions ontology</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_classes">Classes</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_profile">Profile</a></p>
+</li>
+<li>
+<p><a href="#_ontology">Ontology</a></p>
+</li>
+<li>
+<p><a href="#_concept_scheme">Concept Scheme</a></p>
+</li>
+<li>
+<p><a href="#_dataset">Dataset</a></p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_dataset">Dataset</h4>
+<div class="paragraph">
+<p>Use instances of <code>schema:Dataset</code> for elements with the role <a href="#role-dataset">Dataset</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_profile">Profile</h4>
+<div class="paragraph">
+<p>Use an instance of <code>prof:Profile</code> for the supermodel.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_ontology">Ontology</h4>
+<div class="paragraph">
+<p>Use instances of <code>owl:Ontology</code> for elements with the role <a href="#role-model">Model</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_concept_scheme">Concept Scheme</h4>
+<div class="paragraph">
+<p>Use instances of <code>skos:ConceptScheme</code> for elements with the role <a href="#_vocabulary">Vocabulary</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_predicates">Predicates</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_validator">Validator</h3>
+<div class="paragraph">
+<p>With this model is supplied a validator that can be used to test conformance claims of data to it. The validator implements a number of rules ensuring that Classes and Predicates are formulated correctly and roles assigned appropriately. The validator is online at:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://linked.data.gov.au/def/supermodel/vaidator" class="bare">https://linked.data.gov.au/def/supermodel/vaidator</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Tools such as <a href="https://shacl-playground.zazuko.com/">Zazuko&#8217;s SHACL Playground</a> or <a href="https://tools.kurrawong.ai/validate">KurrawongAI&#8217;s SHACL Validator</a> can be used with the validator file above to test supermodel data online or the <a href="https://pypi.org/project/pyshacl">pySHACL</a> package can be used to validate data within Python code.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_roles">Roles</h3>
+<div class="paragraph">
+<p>These are the roles that elements within a supermodels can play. They cannot be interpreted as classes of object because roles for datasets, models and so on may vary between supermodel instances and thus are not an eternal type for that object.</p>
+</div>
+<div class="paragraph">
+<p>The roles are a vocabulary of concepts in this hierarchy:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#role-dataset">Dataset</a></p>
+</li>
+<li>
+<p><a href="#role-model">Model</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_component_model">Component Model</a></p>
+</li>
+<li>
+<p><a href="#_reference_data">Reference Data</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_vocabulary">Vocabulary</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><a href="#_data">Data</a></p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#_primary_data">Primary Data</a></p>
+</li>
+<li>
+<p><a href="#_reference_data">Reference Data</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_data">Data</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/data" class="bare">https://linked.data.gov.au/def/supermodel/role/data</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as a collection of discrete or continuous values that convey information, describing the quantity, quality, fact, statistics, other basic units of meaning.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="role-dataset">Dataset</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/dataset" class="bare">https://linked.data.gov.au/def/supermodel/role/dataset</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as a collection of primary or reference <a href="#_data">Data</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_component_model">Component Model</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/component-model" class="bare">https://linked.data.gov.au/def/supermodel/role/component-model</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as a <a href="#_model">Model</a> for a <a href="#_dataset">Dataset</a> of <a href="#_primary_data">Primary Data</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is a child term of <a href="#_reference_data">Reference Data</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_background_model">Background Model</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/background-model" class="bare">https://linked.data.gov.au/def/supermodel/role/background-model</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as a <a href="#_model">Model</a> for a <a href="#_dataset">Dataset</a> of <a href="#_reference_data">Reference Data</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is a child term of <a href="#_reference_data">Reference Data</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="role-model">Model</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/model" class="bare">https://linked.data.gov.au/def/supermodel/role/model</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as an abstract information object that organises elements of data and standardises how they relate to one another and to the properties of real-world entities.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_primary_data">Primary Data</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/primary-data" class="bare">https://linked.data.gov.au/def/supermodel/role/primary-data</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as <a href="#_data">Data</a> that is the main subject of the supermodel that may or may not be used as <a href="#_reference_data">Reference Data</a> also.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reference_data">Reference Data</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/reference-data" class="bare">https://linked.data.gov.au/def/supermodel/role/reference-data</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as <a href="#_data">Data</a> that is used as an integration point by one or more <a href="#_dataset">Datasets</a>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vocabulary">Vocabulary</h4>
+<div class="paragraph">
+<p><code><a href="https://linked.data.gov.au/def/supermodel/role/vocabulary" class="bare">https://linked.data.gov.au/def/supermodel/role/vocabulary</a></code></p>
+</div>
+<div class="paragraph">
+<p>Acting as a controlled collection of terms, usually with a hierarchy but sometimes just a list, used as <a href="#_reference_data">Reference Data</a> by <a href="#_dataset">Datasets</a>.</p>
+</div>
+<div class="paragraph">
+<p>This is a child term of <a href="#_reference_data">Reference Data</a>.</p>
+</div>
+<div id="NOTE" class="exampleblock">
+<div class="content">
+<div class="paragraph">
+<p>In general in the <a href="#_semantic_web">Semantic Web</a>, vocabularies are indistinguishable from simple <a href="#_model">Models</a> but within supermodels, vocabularies should be created as lists or hierarchies of terms used to classify or categorise other objects, not as collections of complex objects.</p>
+</div>
+<div class="paragraph">
+<p>See the <a href="https://linked.data.gov.au/def/vocpub">VocPub profile</a> as a model of classification vocabularies that can be folled for supermodels.</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -682,7 +1227,7 @@ There are 3 billion women in the world who don&#8217;t look like supermodels and
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2025-11-04 15:16:39 UTC
+Last updated 2025-11-13 11:31:06 UTC
 </div>
 </div>
 </body>
