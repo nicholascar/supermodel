@@ -2,7 +2,7 @@
 
 = Supermodel Model
 
-A model for the integration of multiple models.
+A Semantic Web model for the integration of multiple models.
 
 [quote, Kate Moss]
 Never complain, never explain
@@ -13,15 +13,15 @@ Never complain, never explain
 |===
 |**IRI** | `https://linked.data.gov.au/def/supermodel`
 |**Preferred Label** | Supermodel
-|**Definition** | A Semantic Web model aimed at facilitating dataset-specific and generalised, integrative, modelling within scenarios.
+|**Definition** | A Supermodel is an enterprise data model that provides a structure for the creation of models for specialised datasets that allow for their uniqueness to be preserved but also provide for their deep integration.
 |**Created** | 2021-12-10
-|**Modified** | 2025-11-13
+|**Modified** | 2025-11-14
 |**Issued** | -
 |**Creator** | https://orcid.org/0000-0002-8742-7730[Nicholas J. Car]
 |**Publisher** | https://kurrawong.ai[KurrawongAI]
 
 _This model is not yet officially adopted by a government organisation._
-|**Provenance** | This model wan created in response to the needs of several projects that require both specialised models for different datasets and their integration. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information Addressing & Cadastral modelling 2022 - 2025], the https://data.idnau.org[Indigenous Data Network catalogue modelling, 2021-2023], the https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[Geological Survey of WA's Knowledge Graph, 2025] and the https://eia.testing.bdr.gov.au/[_EIA Demonstrator_, 2025].
+|**Provenance** | This model was created in response to the needs of several projects that require both specialised models for different datasets and their integration. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information Addressing & Cadastral modelling 2022 - 2025], the https://data.idnau.org[Indigenous Data Network catalogue modelling, 2021-2023], the https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[Geological Survey of WA's Knowledge Graph, 2025] and the https://eia.testing.bdr.gov.au/[_EIA Demonstrator_, 2025].
 |**Status** | Stable
 |**Version** | `:1.0.0`
 |**Code Repository** | https://github.com/Kurrawong/supermodel-model
