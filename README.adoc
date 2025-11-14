@@ -220,6 +220,19 @@ Use instances of `skos:ConceptScheme` for elements with the role <<Vocabulary>>.
 
 === Predicates
 
+* <<is profile of>>
+* <<conforms to>>
+
+==== is profile of
+
+Use the predicate `prof:isProfileOf` to indicate the dependence of a <<Model>> on another <<Model>>.
+
+Dependence should be indicated whenever one model reuses any elements from another.
+
+==== conforms to
+
+Use the predicate `dcterms:conformsTo` to indicate that a <<Dataset>> conforms to a <<Model>>.
+
 === Validator
 
 With this model is supplied a validator that can be used to test conformance claims of data to it. The validator implements a number of rules ensuring that Classes and Predicates are formulated correctly and roles assigned appropriately. The validator is online at:
