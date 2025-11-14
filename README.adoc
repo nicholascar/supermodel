@@ -72,7 +72,7 @@ All the _formal relations_, _model roles_ and the <<Model>> given here are conce
 
 Semantic Web resources - data, models & vocabularies - are the best form of digital resources known for reuse since they require all elements to be strongly defined - nothing is left to interpretation - and they are optimised for distribution and referencing.
 
-While many useful models are not Semantic Web models, all models can be realised as such and the Semantic Web formulation of models and data is necessary for supermodels so that many existing models can be used and so things created for a particular supermodel themselves can be maximally reused.
+While many useful models are not Semantic Web models, all models can be realised as such and the Semantic Web formulation of models and data in the <<OWL, Web Ontology Language>> is necessary for supermodels so that many existing models can be used and so things created for a particular supermodel themselves can be maximally reused.
 
 === Formal Relations
 
@@ -176,6 +176,8 @@ The Model for a Supermodel is summarised as follows:
 ** even when data systems are not implemented as native Semantic Web applications
 * relations between elements are modelled using predicates that indicate dependence or conformance
 
+In addition to those main points, supermodel elements should be documented with basic annotation predicates such as `schema:name` to indicate an element's name.
+
 === Namespaces
 
 Prefixes in the table below for https://en.wikipedia.org/wiki/Internationalized_Resource_Identifier[IRI] are used to indicate the identity of elements within this model.
@@ -200,7 +202,7 @@ An example prefixed Semantic Web object is the https://www.w3.org/TR/skos-refere
 
 === Example
 
-A complete example of a real supermodel instance - that of https://linked.data.gov.au/org/qsi[Queensland Spatial Information]'s _Queensland Spatial Information Supermodel_ online at https://linked.data.gov.au/def/qsi-supermodel - is as follows:
+An example of a real supermodel instance - that of https://linked.data.gov.au/org/qsi[Queensland Spatial Information]'s _Queensland Spatial Information Supermodel_ online at https://linked.data.gov.au/def/qsi-supermodel - abbreviated for clarity by hiding the vocabularies and some profile relations, is as follows:
 
 [.right.text-center]
 image::images/example-qsi.svg["Queensland Spatial Information's Supermodel",width=75%]
@@ -209,6 +211,15 @@ The source data for the image above, in the https://en.wikipedia.org/wiki/Turtle
 
 [source,turtle]
 ----
+<https://linked.data.gov.au/def/qsi-supermodel>
+    a prof:Profile ;
+    schema:name "Queensland Spatial Information Supermodel" ;
+    schema:hasPart
+        <https://linked.data.gov.au/dataset/qld-addr> ,
+        <https://linked.data.gov.au/dataset/qld-place-names> ,
+        <https://linked.data.gov.au/dataset/qld-road-names> ;
+.
+
 <https://linked.data.gov.au/dataset/qld-addr>
     a schema:Dataset ;
     schema:name "Queensland Addresses Dataset" ;
@@ -297,7 +308,6 @@ The source data for the image above, in the https://en.wikipedia.org/wiki/Turtle
 .
 ----
 
-
 === Classes
 
 * <<Profile>>
@@ -305,21 +315,38 @@ The source data for the image above, in the https://en.wikipedia.org/wiki/Turtle
 * <<Concept Scheme>>
 * <<Dataset>>
 
+==== Profile
+
+Use an instance of `prof:Profile` for the supermodel.
+
+The definition of this class is taken from <<PROF>>.
+
 ==== Dataset
 
 Use instances of `schema:Dataset` for elements with the role <<role-dataset>>.
 
-==== Profile
+The definition of this class is taken from <<SDO>>.
 
-Use an instance of `prof:Profile` for the supermodel.
+[source,turtle]
+----
+<https://linked.data.gov.au/dataset/qld-addr>
+    a schema:Dataset ;
+    schema:name "Queensland Addresses Dataset" ;
+    dcterms:conformsTo <https://linked.data.gov.au/def/addr> ;
+.
+----
 
 ==== Ontology
 
 Use instances of `owl:Ontology` for elements with the role <<role-model>>.
 
+The definition of this class is taken from <<OWL>>.
+
 ==== Concept Scheme
 
 Use instances of `skos:ConceptScheme` for elements with the role <<Vocabulary>>.
+
+The definition of this predicate is taken from <<SKOS>>.
 
 === Predicates
 
@@ -332,9 +359,13 @@ Use the predicate `prof:isProfileOf` to indicate the dependence of a <<Model>> o
 
 Dependence should be indicated whenever one model reuses any elements from another.
 
+The definition of this predicate is taken from <<PROF>>.
+
 ==== conforms to
 
 Use the predicate `dcterms:conformsTo` to indicate that a <<Dataset>> conforms to a <<Model>>.
+
+The definition of this predicate is taken from <<DCTERMS>>.
 
 === Validator
 
@@ -343,7 +374,6 @@ With this model is supplied a validator that can be used to test conformance cla
 * https://linked.data.gov.au/def/supermodel/vaidator
 
 Tools such as https://shacl-playground.zazuko.com/[Zazuko's SHACL Playground] or https://tools.kurrawong.ai/validate[KurrawongAI's SHACL Validator] can be used with the validator file above to test supermodel data online or the https://pypi.org/project/pyshacl[pySHACL] package can be used to validate data within Python code.
-
 
 ////
  e their dependence on other models when reusing parts from them. For example, if a _Background Model_ called *Feature Observations* has a pattern for _Feature Property Measurements_, then a _Component Model_ of *Field Measurements of Trees* implementing that pattern will need to state that it is a _profile of_ *Feature Observations*.
@@ -477,11 +507,22 @@ There are 3 billion women in the world who don't look like supermodels and only 
 
 == References
 
+[[DCTERMS]]
+[DCTERMS]:: DCMI Usage Board, _DCMI Metadata Terms_, RDF Vocabulary (20 January 2020). https://www.dublincore.org/specifications/dublin-core/dcmi-terms/
+
 [[OWL]]
 [OWL]:: World Wide Web Consortium, _OWL 2 Web Ontology Language_, W3C Recommendation (11 December 2012). https://www.w3.org/TR/owl2-overview/
 
 [[PROF]]
 [PROF]:: World Wide Web Consortium, _The Profiles Vocabulary_, W3C Working Group Note (18 December 2019). https://www.w3.org/TR/dx-prof/
 
+[[SDO]]
+[PROF]:: schema.org Consortium, _schema.org_, Ontology (14 November 2025). https://schema.org
+
+[[SKOS]]
+[SKOS]:: World Wide Web Consortium, _SKOS Simple Knowledge Organization System Reference_, W3C Working Group Note (19 August 2009). https://www.w3.org/TR/skos-reference/
+
+////
 [[RDFS]]
 [RDFS]:: World Wide Web Consortium, _RDF Schema 1.1_, W3C Recommendation (25 February 2014). https://www.w3.org/TR/rdf-schema/
+////
