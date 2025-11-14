@@ -24,7 +24,7 @@ _This model is not yet officially adopted by a government organisation._
 |**Provenance** | This model wan created in response to the needs of several projects that require both specialised models for different datasets and their integration. The projects were: Geoscience Australia's _Sites, Samples Surveys_ modelling and Linked Data systems upgrade in 2022, FSDF operationalisation 2022, https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information Addressing & Cadastral modelling 2022 - 2025], the https://data.idnau.org[Indigenous Data Network catalogue modelling, 2021-2023], the https://geological-survey-of-western-australia.github.io/GSWA-Supermodel/[Geological Survey of WA's Knowledge Graph, 2025] and the https://eia.testing.bdr.gov.au/[_EIA Demonstrator_, 2025].
 |**Status** | Stable
 |**Version** | `:1.0.0`
-|**Code Repository** | https://github.com/kurrawong/supermodel
+|**Code Repository** | https://github.com/Kurrawong/supermodel-model
 |**License** | https://creativecommons.org/licenses/by/4.0/[Creative Commons Attribution 4.0 International (CC BY 4.0)]
 |**Copyright** | &copy; Nicholas J. Car, 2021-2024, KurrawongAI, 2025
 |**Machine-readable form (RDF)** | https://linked.data.gov.au/def/supermodel.ttl
@@ -171,10 +171,10 @@ We don't wake up for less than $10,000 a day
 
 The Model for a Supermodel is summarised as follows:
 
-* all models are formulated as Semantic Web models
+* all elements of the supermodel are modelled as instances of well-known Semantic Web model classes
+** particular classes are determined by the element's role
 ** even when data systems are not implemented as native Semantic Web applications
-** each model is represented as a `owl:Ontology`
-* each model must indicate depends on other models that it reuses elements from my use of the `prof:isProfileOf` predicate
+* relations between elements are modelled using predicates that indicate dependence or conformance
 
 === Namespaces
 
@@ -184,6 +184,7 @@ Prefixes in the table below for https://en.wikipedia.org/wiki/Internationalized_
 |===
 |Prefix | Namespace | Description
 
+| `dcterms` | `http://purl.org/dc/terms/` | Dublin Core Terms
 | `ex` | `http://example.com/` | Generic examples
 | `geo` | `http://www.opengis.net/ont/geosparql#` | OGC GeoSPARQL
 | `owl` | `http://www.w3.org/2002/07/owl#` | Web Ontology Language ontology
@@ -194,6 +195,108 @@ Prefixes in the table below for https://en.wikipedia.org/wiki/Internationalized_
 | `skos` | `http://www.w3.org/2004/02/skos/core#` | Simple Knowledge Organization System (SKOS) ontology
 | `xsd` | `http://www.w3.org/2001/XMLSchema#` | XML Schema Definitions ontology
 |===
+
+An example prefixed Semantic Web object is the https://www.w3.org/TR/skos-reference/[SKOS] model's _Concept Scheme_ class used to represent taxonomies (vocabularies) of concepts. It's full IRI is `http://www.w3.org/2004/02/skos/core#ConceptScheme` and in prefixed form is `skos:ConceptScheme`
+
+=== Example
+
+A complete example of a real supermodel instance - that of https://linked.data.gov.au/org/qsi[Queensland Spatial Information]'s _Queensland Spatial Information Supermodel_ online at https://linked.data.gov.au/def/qsi-supermodel - is as follows:
+
+[.right.text-center]
+image::images/example-qsi.svg["Queensland Spatial Information's Supermodel",width=75%]
+
+The source data for the image above, in the https://en.wikipedia.org/wiki/Turtle_(syntax)[Turtle] format, is as follows:
+
+[source,turtle]
+----
+<https://linked.data.gov.au/dataset/qld-addr>
+    a schema:Dataset ;
+    schema:name "Queensland Addresses Dataset" ;
+    dcterms:conformsTo <https://linked.data.gov.au/def/addr> ;
+.
+
+<https://linked.data.gov.au/dataset/qld-place-names>
+    a schema:Dataset ;
+    schema:name "Queensland Place Names Dataset" ;
+    dcterms:conformsTo <https://linked.data.gov.au/def/gn> ;
+.
+
+<https://linked.data.gov.au/dataset/qld-road-names>
+    a schema:Dataset ;
+    schema:name "Queensland road Names Dataset" ;
+    dcterms:conformsTo <https://linked.data.gov.au/def/roads> ;
+.
+
+<https://linked.data.gov.au/def/addr>
+    a owl:Ontology ;
+    schema:name "Address Model" ;
+    prof:isProfileOf
+        <https://linked.data.gov.au/def/cn> ,
+        <http://www.opengis.net/doc/IS/geosparql/1.1> ;
+.
+
+<https://linked.data.gov.au/def/gn>
+    a owl:Ontology ;
+    schema:name "Geographical Names Model" ;
+    prof:isProfileOf
+        <https://linked.data.gov.au/def/cn> ,
+        <http://www.opengis.net/doc/IS/geosparql/1.1> ;
+.
+
+<https://linked.data.gov.au/def/roads>
+    a owl:Ontology ;
+    schema:name "Road Names Model" ;
+    prof:isProfileOf
+        <https://linked.data.gov.au/def/cn> ,
+        <http://www.opengis.net/doc/IS/geosparql/1.1> ;
+.
+
+<https://linked.data.gov.au/def/cad>
+    a owl:Ontology ;
+    schema:name "Cadastre Model" ;
+    prof:isProfileOf
+        <https://linked.data.gov.au/def/cn> ,
+        <https://linked.data.gov.au/def/csdm> ;
+.
+
+<https://linked.data.gov.au/def/csdm>
+    a owl:Ontology ;
+    schema:name "Cadastral Survey Data Model" ;
+    prof:isProfileOf <http://www.opengis.net/doc/IS/geosparql/1.1> ;
+.
+
+<https://linked.data.gov.au/def/cn>
+    a owl:Ontology ;
+    schema:name "Compound Names Model" ;
+    prof:isProfileOf
+        <https://linked.data.gov.au/def/lifecycle> ,
+        <https://schema.org> ;
+.
+
+<https://schema.org>
+    a owl:Ontology ;
+    schema:name "schema.org Model" ;
+    prof:isProfileOf <http://www.w3.org/2002/07/owl> ;
+.
+
+<http://www.opengis.net/doc/IS/geosparql/1.1>
+    a owl:Ontology ;
+    schema:name "GeoSPARQL Model" ;
+    prof:isProfileOf <http://www.w3.org/2002/07/owl> ;
+.
+
+<https://linked.data.gov.au/def/lifecycle>
+    a owl:Ontology ;
+    schema:name "Lifecycle Model" ;
+    prof:isProfileOf <http://www.w3.org/2002/07/owl> ;
+.
+
+<http://www.w3.org/2002/07/owl>
+    a owl:Ontology ;
+    schema:name "Web Ontology Language Model" ;
+.
+----
+
 
 === Classes
 
@@ -371,7 +474,6 @@ There are 3 billion women in the world who don't look like supermodels and only 
 * https://linked.data.gov.au/def/qsi-supermodel[Queensland Spatial Information's Supermodel]
 * https://linked.data.gov.au/def/eia-supermodel[Environmental Information Australia's Supermodel]
 * https://linked.data.gov.au/def/abis[Australian Biodiversity Information Standard - a Supermodel]
-
 
 == References
 
