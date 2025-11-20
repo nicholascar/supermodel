@@ -22,6 +22,8 @@ jobs:
         mkdir -p docs/images
         cp images/* docs/images/
         asciidoctor README.adoc -o docs/index.html
+        echo "Copy over RDF"
+        cp model.ttl docs/
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
