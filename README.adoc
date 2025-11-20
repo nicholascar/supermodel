@@ -423,15 +423,24 @@ These are the roles that elements within a supermodels can play. They cannot be 
 
 The roles are a vocabulary of concepts in this hierarchy:
 
+* <<role-supermodel-definition>>
 * <<role-dataset>>
 * <<role-model>>
-** <<Component Model>>
-** <<Reference Data>>
-*** <<Vocabulary>>
-* <<Data>>
-** <<Primary Data>>
-** <<Reference Data>>
+** <<role-component-model>>
+** <<role-reference-data>>
+*** <<role-vocabulary>>
+* <<role-data>>
+** <<role-primary-data>>
+** <<role-reference-data>>
 
+[[role-supermodel-definition]]
+==== Supermodel Definition
+
+`https://linked.data.gov.au/def/supermodel/role/supermodel-definition`
+
+Acting as the definitional object of the Supermodel and container of all its elements.
+
+[[role-data]]
 ==== Data
 
 `https://linked.data.gov.au/def/supermodel/role/data`
@@ -445,6 +454,7 @@ Acting as a collection of discrete or continuous values that convey information,
 
 Acting as a collection of primary or reference <<Data>>.
 
+[[role-component-model]]
 ==== Component Model
 
 `https://linked.data.gov.au/def/supermodel/role/component-model`
@@ -453,6 +463,7 @@ Acting as a <<Model>> for a <<Dataset>> of <<Primary Data>>.
 
 This is a child term of <<Reference Data>>.
 
+[[role-background-model]]
 ==== Background Model
 
 `https://linked.data.gov.au/def/supermodel/role/background-model`
@@ -468,18 +479,21 @@ This is a child term of <<Reference Data>>.
 
 Acting as an abstract information object that organises elements of data and standardises how they relate to one another and to the properties of real-world entities.
 
+[[role-primary-data]]
 ==== Primary Data
 
 `https://linked.data.gov.au/def/supermodel/role/primary-data`
 
 Acting as <<Data>> that is the main subject of the supermodel that may or may not be used as <<Reference Data>> also.
 
+[[role-reference-data]]
 ==== Reference Data
 
 `https://linked.data.gov.au/def/supermodel/role/reference-data`
 
 Acting as <<Data>> that is used as an integration point by one or more <<Dataset, Datasets>>.
 
+[[role-vocabulary]]
 ==== Vocabulary
 
 `https://linked.data.gov.au/def/supermodel/role/vocabulary`
